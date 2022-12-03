@@ -44,11 +44,11 @@ def meshgrid_from_lloyd_ts(model_ts, n, scale=1.0):
 def load_point_cloud_by_file_extension(file_name, compute_normals=False):
     import point_cloud_utils as pcu
     if file_name.endswith(".obj"):
-        v, f, n = pcu.read_obj(file_name, dtype=np.float32)
+        v, f, n = pcu.load_mesh_vfn(file_name, dtype=np.float32)
     elif file_name.endswith(".off"):
-        v, f, n = pcu.read_off(file_name, dtype=np.float32)
+        v, f, n = pcu.load_mesh_vfn(file_name, dtype=np.float32)
     elif file_name.endswith(".ply"):
-        v, f, n, _ = pcu.read_ply(file_name, dtype=np.float32)
+        v, f, n = pcu.load_mesh_vfn(file_name, dtype=np.float32)
     elif file_name.endswith(".npts"):
         v, n = load_srb_range_scan(file_name)
         f = []
